@@ -108,7 +108,7 @@ const verifyMail = async (req, res = response) => {
         }
         
         // Generar JWt
-        const token = await generarJWT(user.uid);
+        const token = await generarJWT(user.id);
 
         res.json({
             ok: true,
@@ -177,12 +177,16 @@ const renewToken = async (req, res = response) => {
     const uid = req.uid;
     
     try {
+        const user = await User.findOne({_id: uid});
 
-        const user = await User.findById(uid);
+        if (user == null) {
+            return res.status(400).json({
+                ok: false,
+                msg: 'No se encontró el usuario'
+            });
+        }
 
         const token = await generarJWT(user.id);
-
-        console.log('Simon, puede entrar');
         
         res.json({
             ok: true,
@@ -192,7 +196,6 @@ const renewToken = async (req, res = response) => {
         });
             
     } catch (error) {
-
         console.log(error);
         res.status(500).json({
             ok: false,
