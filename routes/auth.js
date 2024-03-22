@@ -29,6 +29,15 @@ router.post('/', [
     validarCampos,
 ], login);
 
+// Test
+router.get('/holamundo', (req, res = response) => {
+        
+        res.json({
+            ok: true,
+            msg: 'Hola Bro',
+        });
+});
+
 router.get('/renew', validarJWT, renewToken);
 
 module.exports = router;

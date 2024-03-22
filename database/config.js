@@ -1,17 +1,17 @@
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 
-const dbConnection = async() => {
-    try {
-        await mongoose.connect(process.env.DB_CNN);
+// const dbConnection = async() => {
+//     try {
+//         await mongoose.connect(process.env.DB_CNN);
 
-        console.log('DB Online');
+//         console.log('DB Online');
 
-    } catch (error) {
-        console.log(error);
-        throw new Error('Error en la base de datos');
-    }
- }
+//     } catch (error) {
+//         console.log(error);
+//         throw new Error('Error en la base de datos');
+//     }
+//  }
 
- module.exports = {
-    dbConnection
- }
+//  module.exports = {
+//     dbConnection
+//  }
